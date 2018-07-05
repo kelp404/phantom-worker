@@ -64,7 +64,7 @@ exports.baseView = function (req, res, next) {
 
 ## Config
 phantom-worker use [config](https://www.npmjs.com/package/config).
-You can add your config for your `NODE_ENV`.
+You can add your config for your `NODE_ENV`.  
 /config/production.js
 ```js
 module.exports = {

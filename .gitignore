@@ -1,0 +1,16 @@
+# OS X
+.DS_Store
+
+# Python
+*.pyc
+
+# build
+/dist
+/build-*
+
+# node modules
+/node_modules
+/package-lock.json
+
+# WebStorm
+/.idea

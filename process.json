@@ -1,0 +1,15 @@
+[
+  {
+    "name": "phantom-worker",
+    "script": "lib/phantom-worker.js",
+    "error_file": "/tmp/phantom-worker.error.log",
+    "out_file": "/tmp/phantom-worker.log",
+    "instances": 1,
+    "watch": false,
+    "merge_logs": true,
+    "autorestart": true,
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }
+]

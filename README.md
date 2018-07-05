@@ -20,6 +20,7 @@ exports.baseView = function (req, res, next) {
     .then(function(content){
       res.send(content);
     });
+    return;
   }
 }
 ```

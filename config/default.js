@@ -16,7 +16,7 @@ module.exports = {
     checkContentScript: "function(){return document.getElementsByClassName('nprogress-busy').length <= 0}",
     redis: {
       host: 'localhost',
-      port: '6379',
+      port: 6379,
       password: '',
       db: 2
     }

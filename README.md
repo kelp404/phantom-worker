@@ -1,8 +1,13 @@
 # phantom-worker
 
 
+## Dependencies
++ Redis Server  
+  Use redis to make a task queue and cache html.
+
+
 ## Quick Start
-### 1. Clone and Start via pm2
+### 1. Clone and Start via [pm2](http://pm2.keymetrics.io/)
 ```bash
 git clone https://github.com/kelp404/phantom-worker.git
 cd phantom-worker
@@ -28,7 +33,7 @@ exports.baseView = function (req, res, next) {
 };
 ```
 
-**You also can create the task by yourself.**
+**You also can create the task by yourself via [Kue](https://www.npmjs.com/package/kue).**
 ```js
 const device = require('device');
 const kue = require('kue');

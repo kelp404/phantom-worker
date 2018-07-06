@@ -11,6 +11,7 @@
 ```bash
 git clone https://github.com/kelp404/phantom-worker.git
 cd phantom-worker
+npm install
 pm2 start process.json
 ```
 

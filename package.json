@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kelp404/phantom-worker#readme",
   "dependencies": {
+    "bluebird": "3.5.1",
     "config": "1.30.0",
     "kue": "0.11.6",
     "log": "1.4.0",

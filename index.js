@@ -5,19 +5,15 @@
 
   utils = require('./lib/utils');
 
-  exports.render = function(args) {
-    if (args == null) {
-      args = {};
-    }
+  exports.render = function(args = {}) {
     return new Promise(function(resolve, reject) {
-
+      var job, queue;
       /*
       @param args {object}
         url: {string}
         isRemoveCompletedJob: {bool}
       @return {promise<{string}>}
-       */
-      var job, queue;
+      */
       if (args.config == null) {
         args.config = {};
       }

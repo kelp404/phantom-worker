@@ -1,9 +1,8 @@
 config = require 'config'
-q = require 'q'
 utils = require './lib/utils'
 
 
-exports.render = (args = {}) ->
+exports.render = (args = {}) -> new Promise (resolve, reject) ->
   ###
   @param args {object}
     url: {string}
@@ -11,14 +10,13 @@ exports.render = (args = {}) ->
   @return {promise<{string}>}
   ###
   args.config ?= {}
-  deferred = q.defer()
   queue = utils.getTaskQueue()
   job = queue.create config.phantomWorker.name,
     url: args.url
   job.on 'complete', (content) ->
     job.remove() if args.isRemoveCompletedJob
-    deferred.resolve content
+    resolve content
   job.on 'failed', (error) ->
-    deferred.reject error
+    reject error
   job.save (error) ->
-  deferred.promise
+    reject(error) if error

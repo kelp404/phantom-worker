@@ -1,6 +1,5 @@
 config = require 'config'
 kue = require 'kue'
-q = require 'q'
 redis = require 'redis'
 
 
@@ -28,28 +27,27 @@ exports.getTaskQueue = ->
       db: config.phantomWorker.redis.db
   exports._queue
 
-exports.getPageContentWhenDone = (page) ->
+exports.getPageContentWhenDone = (page) -> new Promise (resolve, reject) ->
   ###
   @param page {phantom.Page}
   @return {promise<{string}>}
   ###
-  deferred = q.defer()
   checkRenderStatus = (times = 1) ->
     page.evaluateJavaScript config.phantomWorker.checkContentScript
     .then (isDone) ->
       if isDone
         page.property('content').then (content) ->
-          deferred.resolve content
+          resolve content
       else if times >= config.phantomWorker.checkContentRetryTimes
-        deferred.reject new Error("Content did not completed in #{config.phantomWorker.checkContentInterval * config.phantomWorker.checkContentRetryTimes / 1000}s.")
+        reject new Error("Content did not completed in #{config.phantomWorker.checkContentInterval * config.phantomWorker.checkContentRetryTimes / 1000}s.")
       else
         setTimeout ->
           checkRenderStatus times + 1
         , config.phantomWorker.checkContentInterval
     .catch (error) ->
-      deferred.reject error
+      reject error
   checkRenderStatus()
-  deferred.promise
+  return
 
 exports.cleanScriptTags = (html) ->
   ###

@@ -2,7 +2,6 @@ bluebird = require 'bluebird'
 config = require 'config'
 Log = require 'log'
 phantom = require 'phantom'
-q = require 'q'
 utils = require './utils'
 
 
@@ -36,7 +35,7 @@ setTimeout ->
       phantomInstance = instance
       instance.createPage()
     .then (page) ->
-      q.all [
+      Promise.all [
         page
         page.open job.data.url
       ]

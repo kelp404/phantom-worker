@@ -1,6 +1,6 @@
 {
   "name": "phantom-worker",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A PhantomJS worker. Execute the Single Page Application then return html.",
   "main": "index.js",
   "scripts": {

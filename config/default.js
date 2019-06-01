@@ -10,8 +10,8 @@ module.exports = {
       '--disk-cache=yes',
       '--disk-cache-path=/tmp/phantom-worker'
     ],
-    readContentAfter: 1000, // minute seconds. If it is 0 checkContentScript will bee executed.
-    checkContentInterval: 200,  // minute seconds
+    readContentAfter: 1000, // milliseconds. If it is 0 checkContentScript will bee executed.
+    checkContentInterval: 200,  // milliseconds
     checkContentRetryTimes: 50,
     checkContentScript: "function(){return document.getElementsByClassName('nprogress-busy').length <= 0}",
     redis: {
